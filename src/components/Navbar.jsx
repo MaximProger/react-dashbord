@@ -8,6 +8,7 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import avatar from "../data/avatar.jpg";
 import { Cart, Chat, Notification, UserProfile } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
+import OutsideAlerter from "./heplers/OutsideAlerter";
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -63,47 +64,53 @@ const Navbar = () => {
         color={currentColor}
         icon={<AiOutlineMenu />}
       />
-      <div className="flex">
-        <NavButton
-          title="Cart"
-          customFunc={() => handleClick("cart")}
-          color={currentColor}
-          icon={<FiShoppingCart />}
-        />
-        <NavButton
-          title="Chat"
-          dotColor="#03C9D7"
-          customFunc={() => handleClick("chat")}
-          color={currentColor}
-          icon={<BsChatLeft />}
-        />
-        <NavButton
-          title="Notifications"
-          dotColor="#03C9D7"
-          customFunc={() => handleClick("notification")}
-          color={currentColor}
-          icon={<RiNotification3Line />}
-        />
-        <TooltipComponent content="Profile" position="BottomCenter">
-          <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick("userProfile")}
-          >
-            <img className="rounded-full w-8 h-8" src={avatar} alt="Michael" />
-            <p>
-              <span className="text-gray-400 text-14">Hi, </span>{" "}
-              <span className="text-gray-400 font-bold ml-1 text-14">
-                Michael
-              </span>
-            </p>
-            <MdKeyboardArrowDown className="text-gray-400 text-14" />
-          </div>
-        </TooltipComponent>
-        {isClicked.cart && <Cart />}
-        {isClicked.chat && <Chat />}
-        {isClicked.notification && <Notification />}
-        {isClicked.userProfile && <UserProfile />}
-      </div>
+      <OutsideAlerter>
+        <div className="flex">
+          <NavButton
+            title="Cart"
+            customFunc={() => handleClick("cart")}
+            color={currentColor}
+            icon={<FiShoppingCart />}
+          />
+          <NavButton
+            title="Chat"
+            dotColor="#03C9D7"
+            customFunc={() => handleClick("chat")}
+            color={currentColor}
+            icon={<BsChatLeft />}
+          />
+          <NavButton
+            title="Notifications"
+            dotColor="#03C9D7"
+            customFunc={() => handleClick("notification")}
+            color={currentColor}
+            icon={<RiNotification3Line />}
+          />
+          <TooltipComponent content="Profile" position="BottomCenter">
+            <div
+              className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+              onClick={() => handleClick("userProfile")}
+            >
+              <img
+                className="rounded-full w-8 h-8"
+                src={avatar}
+                alt="Michael"
+              />
+              <p>
+                <span className="text-gray-400 text-14">Hi, </span>{" "}
+                <span className="text-gray-400 font-bold ml-1 text-14">
+                  Michael
+                </span>
+              </p>
+              <MdKeyboardArrowDown className="text-gray-400 text-14" />
+            </div>
+          </TooltipComponent>
+          {isClicked.cart && <Cart />}
+          {isClicked.chat && <Chat />}
+          {isClicked.notification && <Notification />}
+          {isClicked.userProfile && <UserProfile />}
+        </div>
+      </OutsideAlerter>
     </div>
   );
 };
