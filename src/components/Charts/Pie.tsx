@@ -12,7 +12,14 @@ import {
 
 import { useStateContext } from "../../contexts/ContextProvider";
 
-const Doughnut = ({ id, data, legendVisiblity, height }) => {
+interface IProps {
+  id: string;
+  data: string;
+  legendVisiblity: boolean;
+  height: undefined | string;
+}
+
+const Doughnut = ({ id, data, legendVisiblity, height }: IProps) => {
   const { currentMode } = useStateContext();
 
   return (

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
+import { IContext } from "../types";
 
-const StateContext = createContext();
+const StateContext = createContext<IContext>({} as IContext);
 
 const initialState = {
   chat: false,
@@ -9,28 +10,32 @@ const initialState = {
   notification: false,
 };
 
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
-  const [screenSize, setScreenSize] = useState(undefined);
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [currentColor, setCurrentColor] = useState("#03C9D7");
   const [currentMode, setCurrentMode] = useState("Light");
   const [themeSettings, setThemeSettings] = useState(false);
 
-  const setMode = (e) => {
+  const setMode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentMode(e.target.value);
     localStorage.setItem("themeMode", e.target.value);
     setThemeSettings(false);
   };
 
-  const setColor = (color) => {
+  const setColor = (color: string) => {
     setCurrentColor(color);
     localStorage.setItem("colorMode", color);
     setThemeSettings(false);
   };
 
-  const handleClick = (clicked) => {
-    if (clicked && !isClicked[clicked]) {
+  const handleClick = (clicked: string) => {
+    if (clicked && !isClicked[clicked as keyof typeof isClicked]) {
       setIsClicked({ ...initialState, [clicked]: true });
     } else {
       setIsClicked({ ...initialState });
