@@ -1,6 +1,17 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const Button = ({ bgColor, color, size, text, borderRadius }) => {
+interface IProps {
+  bgColor?: string;
+  color: string;
+  size?: string;
+  text?: string;
+  borderRadius: string;
+  width?: string;
+  icon?: ReactNode;
+  bgHoverColor?: string;
+}
+
+const Button = ({ bgColor, color, size, text, borderRadius }: IProps) => {
   return (
     <button
       type="button"

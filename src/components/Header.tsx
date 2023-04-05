@@ -1,6 +1,11 @@
 import React from "react";
 
-const Header = ({ category, title }) => {
+interface IProps {
+  category: string;
+  title: string;
+}
+
+const Header = ({ category, title }: IProps) => {
   return (
     <div className="mb-10">
       <p className="text-gray-400">{category}</p>

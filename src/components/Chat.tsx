@@ -40,10 +40,7 @@ const Chat = () => {
                 src={item.image}
                 alt={item.message}
               />
-              <span
-                style={{ background: item.dotColor }}
-                className="absolute inline-flex rounded-full h-2 w-2 right-0 -top-1"
-              />
+              <span className="absolute inline-flex rounded-full h-2 w-2 right-0 -top-1" />
             </div>
             <div>
               <p className="font-semibold dark:text-gray-200 ">

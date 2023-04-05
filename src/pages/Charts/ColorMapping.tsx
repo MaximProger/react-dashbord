@@ -20,6 +20,7 @@ import {
 } from "../../data/dummy";
 import { ChartsHeader } from "../../components";
 import { useStateContext } from "../../contexts/ContextProvider";
+import { IColorMappingPrimaryXAxis, IRangeColorMapping } from "../../types";
 
 const ColorMapping = () => {
   const { currentMode } = useStateContext();
@@ -33,7 +34,7 @@ const ColorMapping = () => {
       <div className="w-full">
         <ChartComponent
           id="charts"
-          primaryXAxis={ColorMappingPrimaryXAxis}
+          primaryXAxis={ColorMappingPrimaryXAxis as IColorMappingPrimaryXAxis}
           primaryYAxis={ColorMappingPrimaryYAxis}
           chartArea={{ border: { width: 0 } }}
           legendSettings={{ mode: "Range", background: "white" }}
@@ -57,7 +58,10 @@ const ColorMapping = () => {
           <RangeColorSettingsDirective>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {rangeColorMapping.map((item, index) => (
-              <RangeColorSettingDirective key={index} {...item} />
+              <RangeColorSettingDirective
+                key={index}
+                {...(item as IRangeColorMapping)}
+              />
             ))}
           </RangeColorSettingsDirective>
         </ChartComponent>

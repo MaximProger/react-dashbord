@@ -11,10 +11,11 @@ import {
 } from "@syncfusion/ej2-react-charts";
 
 import { useStateContext } from "../../contexts/ContextProvider";
+import { IPieChartData } from "../../types";
 
 interface IProps {
   id: string;
-  data: string;
+  data: IPieChartData[];
   legendVisiblity: boolean;
   height: undefined | string;
 }

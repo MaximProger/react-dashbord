@@ -1,6 +1,11 @@
 import React from "react";
 
-const ChartsHeader = ({ category, title }) => (
+interface IProps {
+  category: string;
+  title: string;
+}
+
+const ChartsHeader = ({ category, title }: IProps) => (
   <div className=" mb-10">
     <div>
       <p className="text-lg text-gray-400">Chart</p>

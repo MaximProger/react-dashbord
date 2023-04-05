@@ -15,14 +15,20 @@ import {
   stackedPrimaryXAxis,
   stackedPrimaryYAxis,
 } from "../../data/dummy";
+import { IStackedPrimaryXAxis } from "../../types";
 
-const Stacked = ({ width, hight }) => {
+interface IProps {
+  width?: string | undefined;
+  height?: string | undefined;
+}
+
+const Stacked = ({ width, height }: IProps) => {
   return (
     <ChartComponent
       width={width}
-      hight={hight}
+      height={height}
       id="charts"
-      primaryXAxis={stackedPrimaryXAxis}
+      primaryXAxis={stackedPrimaryXAxis as IStackedPrimaryXAxis}
       primaryYAxis={stackedPrimaryYAxis}
       chartArea={{ border: { width: 0 } }}
       tooltip={{ enable: true }}

@@ -16,6 +16,7 @@ import {
   areaPrimaryXAxis,
 } from "../../data/dummy";
 import { useStateContext } from "../../contexts/ContextProvider";
+import { IAreaPrimaryXAxis } from "../../types";
 
 const Area = () => {
   const { currentMode } = useStateContext();
@@ -26,7 +27,7 @@ const Area = () => {
         <ChartComponent
           id="area-chart"
           height="420px"
-          primaryXAxis={areaPrimaryXAxis}
+          primaryXAxis={areaPrimaryXAxis as IAreaPrimaryXAxis}
           primaryYAxis={areaPrimaryYAxis}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}

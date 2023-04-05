@@ -4,8 +4,19 @@ import {
   Inject,
   SparklineTooltip,
 } from "@syncfusion/ej2-react-charts";
+import { DataManager } from "@syncfusion/ej2/data";
 
-class SparkLine extends React.PureComponent {
+interface IProps {
+  id: string;
+  height: string | undefined;
+  width: string;
+  color: string;
+  data: Object[] | DataManager | undefined;
+  type: "Line" | "Column" | "WinLoss" | "Pie" | "Area" | undefined;
+  currentColor: string;
+}
+
+class SparkLine extends React.PureComponent<IProps> {
   render() {
     const { id, height, width, color, data, type, currentColor } = this.props;
 

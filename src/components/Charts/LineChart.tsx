@@ -16,6 +16,7 @@ import {
   LinePrimaryXAxis,
 } from "../../data/dummy";
 import { useStateContext } from "../../contexts/ContextProvider";
+import { ILinePrimaryXAxis, ILinePrimaryYAxis } from "../../types";
 
 const LineChart = () => {
   const { currentMode } = useStateContext();
@@ -23,8 +24,8 @@ const LineChart = () => {
     <ChartComponent
       id="line-chart"
       height="420px"
-      primaryXAxis={LinePrimaryXAxis}
-      primaryYAxis={LinePrimaryYAxis}
+      primaryXAxis={LinePrimaryXAxis as ILinePrimaryXAxis}
+      primaryYAxis={LinePrimaryYAxis as ILinePrimaryYAxis}
       chartArea={{ border: { width: 0 } }}
       tooltip={{ enable: true }}
       background={currentMode === "Dark" ? "#33373E" : "#fff"}

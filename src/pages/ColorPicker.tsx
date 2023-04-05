@@ -2,10 +2,11 @@ import React from "react";
 import { ColorPickerComponent } from "@syncfusion/ej2-react-inputs";
 
 import { Header } from "../components";
+import { IARGS } from "../types";
 
-const change = (args) => {
-  document.getElementById("preview").style.backgroundColor =
-    args.currentValue.hex;
+const change = (args: IARGS) => {
+  const preview = document.getElementById("preview") as HTMLDivElement;
+  preview.style.backgroundColor = args.currentValue.hex;
 };
 
 const ColorPicker = () => {

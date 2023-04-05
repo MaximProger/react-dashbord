@@ -18,6 +18,7 @@ import {
 } from "../../data/dummy";
 import { ChartsHeader } from "../../components";
 import { useStateContext } from "../../contexts/ContextProvider";
+import { IBarPrimaryXAxis } from "../../types";
 
 const Bar = () => {
   const { currentMode } = useStateContext();
@@ -28,7 +29,7 @@ const Bar = () => {
       <div className=" w-full">
         <ChartComponent
           id="charts"
-          primaryXAxis={barPrimaryXAxis}
+          primaryXAxis={barPrimaryXAxis as IBarPrimaryXAxis}
           primaryYAxis={barPrimaryYAxis}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}

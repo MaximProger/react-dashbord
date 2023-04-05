@@ -19,11 +19,12 @@ import {
 } from "../../data/dummy";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { ChartsHeader } from "../../components";
+import { IFinancialChartData, IFinancialPrimaryXAxis } from "../../types";
 
 const date1 = new Date("2017, 1, 1");
 
 // eslint-disable-next-line consistent-return
-function filterValue(value) {
+function filterValue(value: IFinancialChartData) {
   if (value.x >= date1) {
     // eslint-disable-next-line no-sequences
     return value.x, value.high, value.low;
@@ -40,7 +41,7 @@ const Financial = () => {
       <div className="w-full">
         <ChartComponent
           id="charts"
-          primaryXAxis={FinancialPrimaryXAxis}
+          primaryXAxis={FinancialPrimaryXAxis as IFinancialPrimaryXAxis}
           primaryYAxis={FinancialPrimaryYAxis}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true, shared: true }}
